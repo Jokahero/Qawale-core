@@ -4,12 +4,12 @@ Player::Player(int number, const QString& name) : QObject(parent), _number(numbe
 
 void waitForSignal(QObject* object, const char* signal) {
     QEventLoop loop;
-    QObject::connect(object, signal, &loop, SLOT(/*quit()*/));
+    QObject::connect(object, signal, &loop, SLOT(quit()));
     loop.exec();
 }
 
-int Player::play_t() {
-    _future = QtConcurrent::run(this, &Player::play/*, pEtat*/);
+int Player::play_t(const Gameboard& state) {
+    _future = QtConcurrent::run(this, &Player::play, state);
     _futureWatcher.setFuture(_future);
     waitForSignal(&_futureWatcher, SIGNAL(finished()));
     return _future.result();
