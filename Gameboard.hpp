@@ -4,37 +4,45 @@
 #include <QtCore/QMetaType>
 #include <QtCore/QVector>
 
-class Hole;
+namespace QAwale {
+    namespace Core {
+        class Hole;
+    }
+}
 
-class Gameboard {
-public:
-    Gameboard();
-    Gameboard(const Gameboard& source);
+namespace QAwale {
+    namespace Core {
+        class Gameboard {
+        public:
+            Gameboard();
+            Gameboard(const Gameboard& source);
 
-    virtual ~Gameboard();
+            virtual ~Gameboard();
 
-    Gameboard& operator=(const Gameboard& source);
-    bool operator ==(const Gameboard& other) const;
-    bool operator !=(const Gameboard& other) const;
+            Gameboard& operator=(const Gameboard& source);
+            bool operator ==(const Gameboard& other) const;
+            bool operator !=(const Gameboard& other) const;
 
-    bool isGameEnded() const;
+            bool isGameEnded() const;
 
-    int simulate(int position, Gameboard finalState) const;
+            int simulate(int position, Gameboard finalState) const;
 
-    int play(int position);
+            int play(int position);
 
-    inline int getHoleSeedCount(int holeNumber) const;
+            inline int getHoleSeedCount(int holeNumber) const;
 
-private:
-    QVector<Hole*> _holes;
+        private:
+            QVector<Hole*> _holes;
 
-    void clearHoles();
+            void clearHoles();
 
-    static const unsigned int DEFAULT_HOLE_COUNT;
-};
+            static const unsigned int DEFAULT_HOLE_COUNT;
+        };
 
-inline int Gameboard::getHoleSeedCount(int holeNumber) const {
-    return _holes[holeNumber]->seedCount();
+        inline int Gameboard::getHoleSeedCount(int holeNumber) const {
+            return _holes[holeNumber]->seedCount();
+        }
+    }
 }
 
 Q_DECLARE_METATYPE(Gameboard)
