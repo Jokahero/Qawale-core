@@ -23,6 +23,8 @@ public:
 
     int play(int position);
 
+    inline int getHoleSeedCount(int holeNumber) const;
+
 private:
     QVector<Hole*> _holes;
 
@@ -30,6 +32,10 @@ private:
 
     static const unsigned int DEFAULT_HOLE_COUNT;
 };
+
+inline int Gameboard::getHoleSeedCount(int holeNumber) const {
+    return _holes[holeNumber]->seedCount();
+}
 
 Q_DECLARE_METATYPE(Gameboard)
 
