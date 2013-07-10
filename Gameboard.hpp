@@ -4,11 +4,7 @@
 #include <QtCore/QMetaType>
 #include <QtCore/QVector>
 
-namespace QAwale {
-    namespace Core {
-        class Hole;
-    }
-}
+#include "Hole.hpp"
 
 namespace QAwale {
     namespace Core {
@@ -42,9 +38,10 @@ namespace QAwale {
         inline int Gameboard::getHoleSeedCount(int holeNumber) const {
             return _holes[holeNumber]->seedCount();
         }
+
+        Q_DECLARE_METATYPE(Gameboard)
     }
 }
 
-Q_DECLARE_METATYPE(Gameboard)
 
 #endif // __GAMEBOARD_HPP__

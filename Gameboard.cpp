@@ -2,7 +2,7 @@
 
 namespace QAwale {
     namespace Core {
-        static int Gameboard::DEFAULT_HOLE_COUNT = 12;
+        const unsigned int Gameboard::DEFAULT_HOLE_COUNT = 12;
 
         Gameboard::Gameboard() {
             _holes.resize(DEFAULT_HOLE_COUNT);
@@ -28,14 +28,14 @@ namespace QAwale {
             return *this;
         }
 
-        bool Gameboard::operator ==(const Gameboard& other) {
+        bool Gameboard::operator ==(const Gameboard& other) const {
             for (int i = 0; i < _holes.size(); ++i)
                 if (_holes[i]->seedCount() != other._holes[i]->seedCount())
                     return false;
             return true;
         }
 
-        bool Gameboard::operator !=(const Gameboard& other) {
+        bool Gameboard::operator !=(const Gameboard& other) const {
             return !(*this == other);
         }
 

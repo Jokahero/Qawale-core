@@ -38,8 +38,10 @@ namespace QAwale {
         inline void Hole::seedCount(int amount) {
             _seedCount = amount;
         }
+
+        Q_DECLARE_METATYPE(Hole)
     }
 }
-Q_DECLARE_METATYPE(Hole)
+
 
 #endif // __HOLE_HPP__

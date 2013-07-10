@@ -2,6 +2,8 @@
 #define __PLAYER_HPP__
 
 #include <QObject>
+#include <QFuture>
+#include <QFutureWatcher>
 
 #include "Gameboard.hpp"
 
@@ -10,7 +12,7 @@ namespace QAwale {
         class Player : public QObject {
             Q_OBJECT
         public:
-            Player(int number, const QString& name);
+            Player(int number, const QString& name, QObject* parent = 0);
 
             virtual int play(const Gameboard& state) = 0;
             int play_t(const Gameboard& state);

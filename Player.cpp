@@ -1,8 +1,11 @@
 #include "Player.hpp"
 
+#include <QEventLoop>
+#include <QtConcurrent/QtConcurrent>
+
 namespace QAwale {
     namespace Core {
-        Player::Player(int number, const QString& name) : QObject(parent), _number(number), _name(name), _seedCount(0) {}
+        Player::Player(int number, const QString& name, QObject* parent) : QObject(parent), _number(number), _name(name), _seedCount(0) {}
 
         void waitForSignal(QObject* object, const char* signal) {
             QEventLoop loop;
