@@ -4,10 +4,10 @@
 #include "Gameboard.hpp"
 namespace QAwale {
     namespace Core {
-        enum TypesJoueurs {
-            Joueur,
-            IAFacile,
-            IADifficile
+        enum PlayerType {
+            Player,
+            EasyIA,
+            HardIA
         };
 
         int evaluate(const Gameboard& state, int playerTaking, int opponentTaking, int number);
