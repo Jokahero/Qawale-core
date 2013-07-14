@@ -11,22 +11,15 @@ TEMPLATE = lib
 
 DEFINES += CORE_LIBRARY
 
-SOURCES += Gameboard.cpp\
+SOURCES += Game.cpp\
+			Gameboard.cpp\
 			Hole.cpp\
-			IA.cpp\
-			Player.cpp
+			Player.cpp\
+			AI.cpp
 
-HEADERS += Gameboard.hpp\
+HEADERS += Game.hpp\
+			Gameboard.hpp\
 			Hole.hpp\
-			IA.hpp\
 			Player.hpp\
+			AI.hpp
 
-
-unix:!symbian {
-	maemo5 {
-		target.path = /opt/usr/lib
-	} else {
-		target.path = /usr/lib
-	}
-	INSTALLS += target
-}

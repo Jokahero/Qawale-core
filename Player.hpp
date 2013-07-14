@@ -1,4 +1,4 @@
-#ifndef __PLAYER_HPP_
+#ifndef __PLAYER_HPP__
 #define __PLAYER_HPP__
 
 #include <QObject>
@@ -11,6 +11,7 @@ namespace QAwale {
     namespace Core {
         class Player : public QObject {
             Q_OBJECT
+
         public:
             Player(int number, const QString& name, QObject* parent = 0);
 
