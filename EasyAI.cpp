@@ -86,10 +86,8 @@ namespace QAwale {
                 int max = -100;
                 int emptyHoleCount = 0;
                 int tmp;
-                int startHoleNumber = _number == 1 ? 0 : 6;
-                int endHoleNumber = _number == 1 ? 5 : 11;
 
-                for (int i = startHoleNumber; i <= endHoleNumber; ++i) {
+                for (unsigned int i = _firstHoleNumber; i <= _lastHoleNumber; ++i) {
                     if (state.getHoleSeedCount(i) > 0) {
                         Gameboard finalState = state;
                         int taking = state.simulate(i, finalState);
