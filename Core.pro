@@ -14,12 +14,12 @@ DEFINES += CORE_LIBRARY
 SOURCES += Game.cpp\
 			Gameboard.cpp\
 			Hole.cpp\
-			Player.cpp\
-			AI.cpp
+			AI.cpp \
+			APlayer.cpp
 
 HEADERS += Game.hpp\
 			Gameboard.hpp\
 			Hole.hpp\
-			Player.hpp\
-			AI.hpp
+			AI.hpp \
+			APlayer.hpp
 

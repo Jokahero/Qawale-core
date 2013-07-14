@@ -2,7 +2,7 @@
 
 #include "Gameboard.hpp"
 #include "AI.hpp"
-#include "Player.hpp"
+#include "APlayer.hpp"
 
 namespace QAwale {
     namespace Core {
@@ -30,8 +30,8 @@ namespace QAwale {
             start();
         }
 
-        Player* Game::createPlayer(const QString &name, PlayerType type, int number) {
-            Player* player = NULL;
+        APlayer* Game::createPlayer(const QString &name, PlayerType type, int number) {
+            APlayer* player = NULL;
             switch (type) {
                 case Person :
                     // TODO: create IPlayer class
@@ -53,7 +53,7 @@ namespace QAwale {
         void Game::start() {
             int playerNumberToPlay = 1;
             while (!_gameboard.isGameEnded()) {
-                Player* player = playerNumberToPlay == 1 ? _firstPlayer : _secondPlayer;
+                APlayer* player = playerNumberToPlay == 1 ? _firstPlayer : _secondPlayer;
                 emit roundSwap(player);
 
                 Gameboard savedState = _gameboard;
@@ -70,7 +70,7 @@ namespace QAwale {
                 playerNumberToPlay = 3 - playerNumberToPlay;
             }
 
-            Player* winner = _firstPlayer->seedCount() > _secondPlayer->seedCount() ? _firstPlayer : _secondPlayer;
+            APlayer* winner = _firstPlayer->seedCount() > _secondPlayer->seedCount() ? _firstPlayer : _secondPlayer;
             emit gameEnded(winner);
         }
     }

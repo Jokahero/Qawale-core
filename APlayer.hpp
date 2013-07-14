@@ -9,11 +9,11 @@
 
 namespace QAwale {
     namespace Core {
-        class Player : public QObject {
+        class APlayer : public QObject {
             Q_OBJECT
 
         public:
-            Player(int number, const QString& name, QObject* parent = 0);
+            APlayer(int number, const QString& name, QObject* parent = 0);
 
             virtual int play(const Gameboard& state) = 0;
             int play_t(const Gameboard& state);
@@ -38,15 +38,15 @@ namespace QAwale {
             QFutureWatcher<int> _futureWatcher;
         };
 
-        inline int Player::seedCount() const {
+        inline int APlayer::seedCount() const {
             return _seedCount;
         }
 
-        inline QString Player::name() const {
+        inline QString APlayer::name() const {
             return _name;
         }
 
-        inline int Player::number() const {
+        inline int APlayer::number() const {
             return _number;
         }
 

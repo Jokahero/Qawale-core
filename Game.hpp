@@ -7,7 +7,7 @@
 
 namespace QAwale {
     namespace Core {
-        class Player;
+        class APlayer;
     }
 }
 
@@ -21,22 +21,22 @@ namespace QAwale {
             virtual ~Game();
 
         signals:
-            void init(Player* firstPlayer, Player* secondPlayer);
-            void roundSwap(Player* player);
+            void init(APlayer* firstPlayer, APlayer* secondPlayer);
+            void roundSwap(APlayer* player);
             void seedCountChanged(unsigned int holeNumber, unsigned int amount);
             void playerPlayed(unsigned int holeNumber, unsigned int playerNumber);
-            void gameEnded(Player* winner);
+            void gameEnded(APlayer* winner);
             void quit();
 
         public slots:
             void onInit(const QString& firstPlayerName, PlayerType firstPlayerType, const QString& secondPlayer, PlayerType secondPlayerType);
 
         private:
-            Player*     _firstPlayer;
-            Player*     _secondPlayer;
+            APlayer*     _firstPlayer;
+            APlayer*     _secondPlayer;
             Gameboard   _gameboard;
 
-            Player* createPlayer(const QString& name, PlayerType type, int number);
+            APlayer* createPlayer(const QString& name, PlayerType type, int number);
             void start();
         };
     }
