@@ -17,3 +17,5 @@
 
 # Generated files
 Makefile*
+debug
+*.pdb
