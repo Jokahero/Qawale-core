@@ -16,12 +16,14 @@ SOURCES += Game.cpp\
 			Hole.cpp\
 			AI.cpp \
 			APlayer.cpp \
-			Player.cpp
+			Player.cpp \
+    EasyAI.cpp
 
 HEADERS += Game.hpp\
 			Gameboard.hpp\
 			Hole.hpp\
 			AI.hpp \
 			APlayer.hpp \
-			Player.hpp
+			Player.hpp \
+    EasyAI.hpp
 

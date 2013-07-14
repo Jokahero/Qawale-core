@@ -30,10 +30,12 @@ namespace QAwale {
         signals:
             void seedsCaught(int amount);
 
-        private:
+        protected:
             QString             _name;
             int                 _seedCount;
             int                 _number;
+
+        private:
             QFuture<int>        _future;
             QFutureWatcher<int> _futureWatcher;
         };
