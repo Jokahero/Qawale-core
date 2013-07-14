@@ -29,14 +29,14 @@ namespace QAwale {
             void quit();
 
         public slots:
-            void onInit(const QString& firstPlayerName, PlayerType firstPlayerType, const QString& secondPlayer, PlayerType secondPlayerType);
+            void onInit(const QString& firstPlayerName, Types::PlayerType firstPlayerType, const QString& secondPlayer, Types::PlayerType secondPlayerType);
 
         private:
             APlayer*     _firstPlayer;
             APlayer*     _secondPlayer;
             Gameboard   _gameboard;
 
-            APlayer* createPlayer(const QString& name, PlayerType type, int number);
+            APlayer* createPlayer(const QString& name, Types::PlayerType type, int number);
             void start();
         };
     }

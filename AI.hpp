@@ -5,11 +5,13 @@
 
 namespace QAwale {
     namespace Core {
-        enum PlayerType {
-            Person,
-            EasyAI,
-            HardAI
-        };
+        namespace Types {
+            enum PlayerType {
+                Person,
+                EasyAI,
+                HardAI
+            };
+        }
 
         int evaluate(const Gameboard& state, int playerTaking, int opponentTaking, int number);
     }

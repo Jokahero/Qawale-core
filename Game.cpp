@@ -16,7 +16,7 @@ namespace QAwale {
             delete _secondPlayer;
         }
 
-        void Game::onInit(const QString& firstPlayerName, PlayerType firstPlayerType, const QString& secondPlayerName, PlayerType secondPlayerType) {
+        void Game::onInit(const QString& firstPlayerName, Types::PlayerType firstPlayerType, const QString& secondPlayerName, Types::PlayerType secondPlayerType) {
             delete _firstPlayer;
             _firstPlayer = NULL;
             delete _secondPlayer;
@@ -30,16 +30,16 @@ namespace QAwale {
             start();
         }
 
-        APlayer* Game::createPlayer(const QString &name, PlayerType type, int number) {
+        APlayer* Game::createPlayer(const QString &name, Types::PlayerType type, int number) {
             APlayer* player = NULL;
             switch (type) {
-                case Person :
+                case Types::Person :
                     // TODO: create IPlayer class
                     break;
-                case EasyAI :
+                case Types::EasyAI :
                     // TODO : create EasyIAPlayer  class
                     break;
-                case HardAI :
+                case Types::HardAI :
                     // TODO : create HardIAPlayer class
                     break;
             }
