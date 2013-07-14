@@ -38,10 +38,9 @@ namespace QAwale {
         inline int Gameboard::getHoleSeedCount(int holeNumber) const {
             return _holes[holeNumber]->seedCount();
         }
-
-        Q_DECLARE_METATYPE(Gameboard)
     }
 }
 
+Q_DECLARE_METATYPE(QAwale::Core::Gameboard)
 
 #endif // __GAMEBOARD_HPP__
