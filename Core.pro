@@ -17,7 +17,8 @@ SOURCES += Game.cpp\
 			AI.cpp \
 			APlayer.cpp \
 			Player.cpp \
-    EasyAI.cpp
+			EasyAI.cpp \
+			HardAI.cpp
 
 HEADERS += Game.hpp\
 			Gameboard.hpp\
@@ -25,5 +26,6 @@ HEADERS += Game.hpp\
 			AI.hpp \
 			APlayer.hpp \
 			Player.hpp \
-    EasyAI.hpp
+			EasyAI.hpp \
+			HardAI.hpp
 
