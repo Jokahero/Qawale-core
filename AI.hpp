@@ -23,8 +23,7 @@ namespace QAwale {
             virtual int play(const Gameboard &state) = 0;
 
         protected:
-            static const unsigned int DEPTH;
-
+            unsigned int _depth;
             unsigned int _firstHoleNumber;
             unsigned int _lastHoleNumber;
 
