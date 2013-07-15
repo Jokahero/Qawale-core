@@ -14,6 +14,8 @@ namespace QAwale {
             virtual int play(const Gameboard &state);
 
         private:
+            static const unsigned int EASY_AI_DEPTH = 6;
+
             virtual int min(Gameboard state, unsigned int depth, unsigned int playerTaking, unsigned int opponentTaking) const;
             virtual int max(Gameboard state, unsigned int depth, unsigned int playerTaking, unsigned int opponentTaking) const;
         };
