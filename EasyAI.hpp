@@ -19,8 +19,8 @@ namespace QAwale {
             unsigned int _firstHoleNumber;
             unsigned int _lastHoleNumber;
 
-            int min(const Gameboard& state, unsigned int depth, int playerTaking, int opponentTaking) const;
-            int max(const Gameboard& state, int depth, int playerTaking, int opponentTaking) const;
+            int min(Gameboard state, unsigned int depth, int playerTaking, int opponentTaking) const;
+            int max(Gameboard state, int depth, int playerTaking, int opponentTaking) const;
         };
     }
 }

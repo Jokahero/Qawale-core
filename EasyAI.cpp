@@ -22,23 +22,8 @@ namespace QAwale {
                 if (state.getHoleSeedCount(i) > 0) {
                     Gameboard finalState;
                     unsigned int taking = state.simulate(i, finalState);
-                    // TODO : compile error on QtConcurrent::run with msvc 2010
-                    /*
-                    c:\qt\qt5.0.1\5.0.1\msvc2010\include\qtconcurrent\qtconcurrentrun.h:146: erreur : C2064: le terme ne correspond pas … une fonction qui prend 5 arguments
-                    EasyAI.cpp(24)ÿ: voir la r‚f‚rence … l'instanciation de la fonction modŠle 'QFuture<T> QtConcurrent::run<QAwale::Core::EasyAI*,int(__thiscall QAwale::Core::EasyAI::* )(const QAwale::Core::Gameboard &,unsigned int,int,int) const,QAwale::Core::Gameboard,unsigned int,unsigned int,int>(Functor,const Arg1 &,const Arg2 &,const Arg3 &,const Arg4 &,const Arg5 &)' en cours de compilation
-                    with
-                    [
-                        T=int,
-                        Functor=QAwale::Core::EasyAI *,
-                        Arg1=int (__thiscall QAwale::Core::EasyAI::* )(const QAwale::Core::Gameboard &,unsigned int,int,int) const,
-                        Arg2=QAwale::Core::Gameboard,
-                        Arg3=unsigned int,
-                        Arg4=unsigned int,
-                        Arg5=int
-                    ]
-                    */
-                    //QFuture<int> thread = QtConcurrent::run(this, &EasyAI::min, finalState, DEPTH, taking, 0);
-                    //threads.insert(i, thread);
+                    QFuture<int> thread = QtConcurrent::run(this, &EasyAI::min, finalState, DEPTH, taking, 0);
+                    threads.insert(i, thread);
                 }
             }
 
@@ -54,7 +39,7 @@ namespace QAwale {
             return position;
         }
 
-        int EasyAI::min(const Gameboard &state, unsigned int depth, int playerTaking, int opponentTaking) const {
+        int EasyAI::min(Gameboard state, unsigned int depth, int playerTaking, int opponentTaking) const {
             if (depth == 0)
                 return evaluate(state, playerTaking, opponentTaking, _number);
             else {
@@ -79,7 +64,7 @@ namespace QAwale {
             }
         }
 
-        int EasyAI::max(const Gameboard& state, int depth, int playerTaking, int opponentTaking) const {
+        int EasyAI::max(Gameboard state, int depth, int playerTaking, int opponentTaking) const {
             if (depth == 0)
                 return evaluate(state, playerTaking, opponentTaking, _number);
             else {
