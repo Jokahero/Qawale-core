@@ -1,8 +1,11 @@
 #include "Game.hpp"
 
-#include "Gameboard.hpp"
 #include "AI.hpp"
 #include "APlayer.hpp"
+#include "EasyAI.hpp"
+#include "Gameboard.hpp"
+#include "HardAI.hpp"
+#include "Player.hpp"
 
 namespace QAwale {
     namespace Core {
@@ -34,13 +37,13 @@ namespace QAwale {
             APlayer* player = NULL;
             switch (type) {
                 case Types::Person :
-                    // TODO: create IPlayer class
+                    player = new Player(number, name);
                     break;
                 case Types::EasyAI :
-                    // TODO : create EasyIAPlayer  class
+                    player = new EasyAI(number, name);
                     break;
                 case Types::HardAI :
-                    // TODO : create HardIAPlayer class
+                    player = new HardAI(number, name);
                     break;
             }
 
