@@ -15,5 +15,12 @@ namespace QAwale {
             else
                 return -1000;
         }
+
+        static unsigned int DEPTH = 6;
+
+        AI::AI(unsigned int number, const QString &name) : APlayer(number, name) {
+            _firstHoleNumber = _number == 1 ? 0 : 6;
+            _lastHoleNumber = _number == 1 ? 4 : 11;
+        }
     }
 }
