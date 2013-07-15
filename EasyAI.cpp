@@ -2,16 +2,9 @@
 
 #include <QtConcurrent/QtConcurrent>
 
-#include "AI.hpp"
-
 namespace QAwale {
     namespace Core {
-        static unsigned int DEPTH = 6;
-
-        EasyAI::EasyAI(unsigned int number, const QString &name) : APlayer(number, name) {
-            _firstHoleNumber = _number == 1 ? 0 : 6;
-            _lastHoleNumber = _number == 1 ? 4 : 11;
-        }
+        EasyAI::EasyAI(unsigned int number, const QString &name) : AI(number, name) {}
 
         int EasyAI::play(const Gameboard &state) {
             int max = -1000;
@@ -39,7 +32,7 @@ namespace QAwale {
             return position;
         }
 
-        int EasyAI::min(Gameboard state, unsigned int depth, int playerTaking, int opponentTaking) const {
+        int EasyAI::min(Gameboard state, unsigned int depth, unsigned int playerTaking, unsigned int opponentTaking) const {
             if (depth == 0)
                 return evaluate(state, playerTaking, opponentTaking, _number);
             else {
@@ -64,7 +57,7 @@ namespace QAwale {
             }
         }
 
-        int EasyAI::max(Gameboard state, int depth, int playerTaking, int opponentTaking) const {
+        int EasyAI::max(Gameboard state, unsigned int depth, unsigned int playerTaking, unsigned int opponentTaking) const {
             if (depth == 0)
                 return evaluate(state, playerTaking, opponentTaking, _number);
             else {
