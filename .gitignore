@@ -4,7 +4,7 @@
 *.o
 
 # Compiled Dynamic libraries
-*.so
+*.so*
 *.dylib
 
 # Compiled Static libraries
@@ -19,3 +19,6 @@
 Makefile*
 debug
 *.pdb
+
+# Moc files
+moc_*.cpp
