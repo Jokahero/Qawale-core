@@ -4,8 +4,6 @@
 
 namespace QAwale {
     namespace Core {
-        static unsigned int DEPTH = 10;
-
         HardAI::HardAI(int number, const QString &name) : AI(number, name) {}
 
         int HardAI::play(const Gameboard &state) {

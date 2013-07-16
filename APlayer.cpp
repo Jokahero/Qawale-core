@@ -5,7 +5,7 @@
 
 namespace QAwale {
     namespace Core {
-        APlayer::APlayer(int number, const QString& name, QObject* parent) : QObject(parent), _number(number), _name(name), _seedCount(0) {}
+        APlayer::APlayer(int number, const QString& name, QObject* parent) : QObject(parent), _name(name), _seedCount(0), _number(number) {}
 
         void waitForSignal(QObject* object, const char* signal) {
             QEventLoop loop;

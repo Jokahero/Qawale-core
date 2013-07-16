@@ -6,7 +6,7 @@ namespace QAwale {
 
         Gameboard::Gameboard() {
             _holes.resize(DEFAULT_HOLE_COUNT);
-            for (int i = 0; i < DEFAULT_HOLE_COUNT; ++i)
+            for (unsigned int i = 0; i < DEFAULT_HOLE_COUNT; ++i)
                 _holes[i] = new Hole(i);
         }
 
@@ -22,7 +22,7 @@ namespace QAwale {
             clearHoles();
 
             _holes.resize(DEFAULT_HOLE_COUNT);
-            for (int i = 0; i < DEFAULT_HOLE_COUNT; ++i)
+            for (unsigned int i = 0; i < DEFAULT_HOLE_COUNT; ++i)
                 _holes[i] = new Hole(*source._holes[i]);
 
             return *this;
