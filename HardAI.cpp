@@ -6,9 +6,7 @@ namespace QAwale {
     namespace Core {
         static unsigned int DEPTH = 10;
 
-        HardAI::HardAI(int number, const QString &name) : AI(number, name) {
-            _depth = HARD_AI_DEPTH;
-        }
+        HardAI::HardAI(int number, const QString &name) : AI(number, name) {}
 
         int HardAI::play(const Gameboard &state) {
             int max = -1000;
@@ -22,7 +20,7 @@ namespace QAwale {
                     TAlphaBeta alphaBeta;
                     alphaBeta.alpha = -100;
                     alphaBeta.beta = 500;
-                    QFuture<int> thread = QtConcurrent::run<int>(this, &HardAI::min, finalState, _depth, taking, 0, alphaBeta);
+                    QFuture<int> thread = QtConcurrent::run<int>(this, &HardAI::min, finalState, DEPTH, taking, 0, alphaBeta);
                     threads.insert(i, thread);
                 }
             }

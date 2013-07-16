@@ -4,9 +4,7 @@
 
 namespace QAwale {
     namespace Core {
-        EasyAI::EasyAI(unsigned int number, const QString &name) : AI(number, name) {
-            _depth = EASY_AI_DEPTH;
-        }
+        EasyAI::EasyAI(unsigned int number, const QString &name) : AI(number, name) {}
 
         int EasyAI::play(const Gameboard &state) {
             int max = -1000;
@@ -17,7 +15,7 @@ namespace QAwale {
                 if (state.getHoleSeedCount(i) > 0) {
                     Gameboard finalState;
                     unsigned int taking = state.simulate(i, finalState);
-                    QFuture<int> thread = QtConcurrent::run<int>(this, &EasyAI::min, finalState, _depth, taking, 0);
+                    QFuture<int> thread = QtConcurrent::run<int>(this, &EasyAI::min, finalState, DEPTH, taking, 0);
                     threads.insert(i, thread);
                 }
             }
