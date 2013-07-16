@@ -23,12 +23,8 @@ namespace QAwale {
             virtual int play(const Gameboard &state) = 0;
 
         protected:
-            unsigned int _depth;
             unsigned int _firstHoleNumber;
             unsigned int _lastHoleNumber;
-
-            virtual int min(Gameboard state, unsigned int depth, unsigned int playerTaking, unsigned int opponentTaking) const = 0;
-            virtual int max(Gameboard state, unsigned int depth, unsigned int playerTaking, unsigned int opponentTaking) const = 0;
         };
     }
 }
