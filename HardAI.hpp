@@ -21,8 +21,8 @@ namespace QAwale {
         private:
             static const unsigned int HARD_AI_DEPTH = 10;
 
-            virtual int min(Gameboard state, unsigned int depth, unsigned int playerTaking, unsigned int opponentTaking) const;
-            virtual int max(Gameboard state, unsigned int depth, unsigned int playerTaking, unsigned int opponentTaking) const;
+            virtual int min(Gameboard state, unsigned int depth, unsigned int playerTaking, unsigned int opponentTaking, TAlphaBeta alphaBeta) const;
+            virtual int max(Gameboard state, unsigned int depth, unsigned int playerTaking, unsigned int opponentTaking, TAlphaBeta alphaBeta) const;
         };
     }
 }

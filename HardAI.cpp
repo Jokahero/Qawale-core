@@ -1,5 +1,7 @@
 #include "HardAI.hpp"
 
+#include <QtConcurrent/QtConcurrent>
+
 namespace QAwale {
     namespace Core {
         static unsigned int DEPTH = 10;
@@ -13,14 +15,14 @@ namespace QAwale {
             int position = _lastHoleNumber;
 
             QMap<int, QFuture<int> > threads;
-            for (int i = _firstHoleNumber; i <= _lastHoleNumber; ++i) {
+            for (unsigned int i = _firstHoleNumber; i <= _lastHoleNumber; ++i) {
                 if (state.getHoleSeedCount(i) > 0) {
                     Gameboard finalState;
                     int taking = state.simulate(i, finalState);
                     TAlphaBeta alphaBeta;
                     alphaBeta.alpha = -100;
                     alphaBeta.beta = 500;
-                    QFuture<int> thread = QtConcurrent::run(this, &HardAI::min, finalState, _depth, taking, 0, alphaBeta);
+                    QFuture<int> thread = QtConcurrent::run<int>(this, &HardAI::min, finalState, _depth, taking, 0, alphaBeta);
                     threads.insert(i, thread);
                 }
             }
@@ -30,7 +32,7 @@ namespace QAwale {
                 iterator.next();
                 if (iterator.value().result() > max) {
                     max = iterator.value().result();
-                    pos = iterator.key();
+                    position = iterator.key();
                 }
             }
 
@@ -45,21 +47,21 @@ namespace QAwale {
                 unsigned int emptyHoleCount = 0;
                 int tmp;
 
-                for (int i = _firstHoleNumber; i <= _lastHoleNumber; ++i) {
+                for (unsigned int i = _firstHoleNumber; i <= _lastHoleNumber; ++i) {
                     if (state.getHoleSeedCount(i) > 0) {
                         Gameboard finalState = state;
                         int taking = state.simulate(i, finalState);
 
                         tmp = max(finalState, depth - 1, playerTaking, opponentTaking + taking, alphaBeta);
 
-                        if (pAlphaBeta.alpha >= tmp)	// Coupure α
+                        if (alphaBeta.alpha >= tmp)	// Coupure α
                             return tmp;
 
                         if (tmp < min)
                             min = tmp;
 
-                        if (tmp < pAlphaBeta.beta)
-                            pAlphaBeta.beta = tmp;
+                        if (tmp < alphaBeta.beta)
+                            alphaBeta.beta = tmp;
 
                     } else
                         ++emptyHoleCount;
@@ -77,23 +79,23 @@ namespace QAwale {
                 int emptyHoleCount = 0;
                 int tmp;
 
-                for (int i = _firstHoleNumber; i <= _lastHoleNumber; ++i) {
+                for (unsigned int i = _firstHoleNumber; i <= _lastHoleNumber; ++i) {
                     if (state.getHoleSeedCount(i) > 0) {
                         Gameboard finalState = state;
                         int taking = state.simulate(i, finalState);
 
                         tmp = min(finalState, depth - 1, playerTaking + taking, opponentTaking, alphaBeta);
 
-                        if (tmp >= pAlphaBeta.beta)		// Coupure β
+                        if (tmp >= alphaBeta.beta)		// Coupure β
                             return tmp;
 
                         if (tmp > max)
                             max = tmp;
 
-                        if (tmp > pAlphaBeta.alpha)
-                            pAlphaBeta.alpha = tmp;
+                        if (tmp > alphaBeta.alpha)
+                            alphaBeta.alpha = tmp;
                     } else
-                        ++nbCasesVides;
+                        ++emptyHoleCount;
                 }
 
                 return (emptyHoleCount == 6 ? playerTaking - opponentTaking : max);

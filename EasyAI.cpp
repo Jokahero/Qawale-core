@@ -17,7 +17,7 @@ namespace QAwale {
                 if (state.getHoleSeedCount(i) > 0) {
                     Gameboard finalState;
                     unsigned int taking = state.simulate(i, finalState);
-                    QFuture<int> thread = QtConcurrent::run(this, &EasyAI::min, finalState, _depth, taking, 0);
+                    QFuture<int> thread = QtConcurrent::run<int>(this, &EasyAI::min, finalState, _depth, taking, 0);
                     threads.insert(i, thread);
                 }
             }
