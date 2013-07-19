@@ -11,21 +11,23 @@ TEMPLATE = lib
 
 DEFINES += CORE_LIBRARY
 
-SOURCES += Game.cpp\
-			Gameboard.cpp\
-			Hole.cpp\
-			AI.cpp \
-			APlayer.cpp \
-			Player.cpp \
-			EasyAI.cpp \
-			HardAI.cpp
+INCLUDEPATH += inc
 
-HEADERS += Game.hpp\
-			Gameboard.hpp\
-			Hole.hpp\
-			AI.hpp \
-			APlayer.hpp \
-			Player.hpp \
-			EasyAI.hpp \
-			HardAI.hpp
+SOURCES += src/Game.cpp\
+			src/Gameboard.cpp\
+			src/Hole.cpp\
+			src/AI.cpp \
+			src/APlayer.cpp \
+			src/Player.cpp \
+			src/EasyAI.cpp \
+			src/HardAI.cpp
+
+HEADERS += inc/Game.hpp\
+			inc/Gameboard.hpp\
+			inc/Hole.hpp\
+			inc/AI.hpp \
+			inc/APlayer.hpp \
+			inc/Player.hpp \
+			inc/EasyAI.hpp \
+			inc/HardAI.hpp
 
