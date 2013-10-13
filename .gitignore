@@ -4,7 +4,7 @@
 *.o
 
 # Compiled Dynamic libraries
-*.so
+*.so*
 *.dylib
 
 # Compiled Static libraries
@@ -12,6 +12,19 @@
 *.la
 *.a
 
-# CMake
-CMakeFiles
+# User files
+*.user
+
+# Generated files
+Makefile*
+debug
+*.pdb
+
+# Moc files
+*_automoc.cpp
+moc_*.cpp
+
+# CMake files
 CMakeCache.txt
+CMakeFiles
+cmake_install.cmake
